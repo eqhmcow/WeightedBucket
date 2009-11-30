@@ -26,7 +26,7 @@ sub bucketize
     if ($DEBUG) {
         require Data::Dumper;
         print "Bucketized data:\n";
-        print Dumper(\%buckets);
+        print Data::Dumper::Dumper(\%buckets);
     }
     return \%buckets;
 }
@@ -47,7 +47,7 @@ sub weigh_buckets
     if ($DEBUG) {
         require Data::Dumper;
         print "Weighed bucket data:\n";
-        print Dumper(\%weights);
+        print Data::Dumper::Dumper(\%weights);
     }
     return \%weights;
 }
@@ -68,7 +68,7 @@ sub map_buckets
     if ($DEBUG) {
         require Data::Dumper;
         print "Bucket mapping data:\n";
-        print Dumper(\%bucket_mapping);
+        print Data::Dumper::Dumper(\%bucket_mapping);
     }
     return \%bucket_mapping;
 }
@@ -82,7 +82,7 @@ sub random_weighted_bucket
         if ($DEBUG) {
             require Data::Dumper;
             print "Testing $random_float against:\n";
-            print Dumper($bucket_mapping_hashref->{$bucket});
+            print Data::Dumper::Dumper($bucket_mapping_hashref->{$bucket});
         }
         return $buckets_hashref->{$bucket}
             if $bucket_mapping_hashref->{$bucket}{'min'} <= $random_float and
