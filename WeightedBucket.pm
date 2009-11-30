@@ -5,24 +5,7 @@ use warnings;
 use List::Util;
 
 # This is example code
-
-my @yells = (
-    {
-        'quote' => 'SOMETHING BAD',
-        'score' => -1,
-    },
-    {
-        'quote' => 'SOMETHING OK',
-        'score' => 0,
-    },
-    {
-        'quote' => 'SOMETHING GOOD',
-        'score' => 1,
-    },
-);
-
-print random_weighted_quote(@yells), "\n";
-
+# see the test file for usage
 sub random_weighted_quote
 {
     my $buckets_hashref = bucketize(@_);
