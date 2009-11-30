@@ -33,7 +33,15 @@ my @yells = (
         'score' => 0,
     },
     {
+        'quote' => 'SOMETHING ELSE OK',
+        'score' => 0,
+    },
+    {
         'quote' => 'SOMETHING GOOD',
+        'score' => 1,
+    },
+    {
+        'quote' => 'SOMETHING ELSE GOOD',
         'score' => 1,
     },
     {
