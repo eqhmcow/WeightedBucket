@@ -1,4 +1,4 @@
-package WeightedBuckets;
+package WeightedBucket;
 use strict;
 use warnings;
 
