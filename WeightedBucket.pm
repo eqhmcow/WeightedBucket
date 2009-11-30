@@ -6,6 +6,7 @@ use List::Util;
 
 # This is example code
 # see the test file for usage
+our $DEBUG = 0;
 sub random_weighted_quote
 {
     my $buckets_hashref = bucketize(@_);
@@ -22,6 +23,11 @@ sub bucketize
     my %buckets;
     push @{$buckets{$_->{'score'} >= 0 ? 0 : $_->{'score'}}},
         $_->{'quote'} foreach @_;
+    if ($DEBUG) {
+        require Data::Dumper;
+        print "Bucketized data:\n";
+        print Dumper(\%buckets);
+    }
     return \%buckets;
 }
 
@@ -37,6 +43,11 @@ sub weigh_buckets
     foreach my $bucket (keys %$buckets_hashref) {
         $weights{$bucket} = @{$buckets_hashref->{$bucket}} *
             (abs($lowest_score) - abs($bucket >= 0 ? 0 : $bucket) + 1);
+    }
+    if ($DEBUG) {
+        require Data::Dumper;
+        print "Weighed bucket data:\n";
+        print Dumper(\%weights);
     }
     return \%weights;
 }
@@ -54,6 +65,11 @@ sub map_buckets
         $current_weight += $bucket_weights_hashref->{$bucket};
         $bucket_mapping{$bucket}{'max'} = $current_weight / $total_weight;
     }
+    if ($DEBUG) {
+        require Data::Dumper;
+        print "Bucket mapping data:\n";
+        print Dumper(\%bucket_mapping);
+    }
     return \%bucket_mapping;
 }
 
@@ -63,6 +79,11 @@ sub random_weighted_bucket
 
     my $random_float = rand;
     foreach my $bucket (keys %$buckets_hashref) {
+        if ($DEBUG) {
+            require Data::Dumper;
+            print "Testing $random_float against:\n";
+            print Dumper($bucket_mapping_hashref->{$bucket});
+        }
         return $buckets_hashref->{$bucket}
             if $bucket_mapping_hashref->{$bucket}{'min'} <= $random_float and
                 $random_float < $bucket_mapping_hashref->{$bucket}{'max'};
