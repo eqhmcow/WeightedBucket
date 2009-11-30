@@ -1,0 +1,53 @@
+Bucketized data:
+$VAR1 = {
+          '0' => [
+                   'SOMETHING OK',
+                   'SOMETHING ELSE OK',
+                   'SOMETHING GOOD',
+                   'SOMETHING ELSE GOOD',
+                   'SOMETHING VERY GOOD'
+                 ],
+          '-2' => [
+                    'SOMETHING VERY BAD'
+                  ],
+          '-1' => [
+                    'SOMETHING BAD',
+                    'SOMETHING ELSE BAD'
+                  ],
+          '-3' => [
+                    'SOMETHING VERY VERY BAD',
+                    'SOMETHING ELSE VERY VERY BAD'
+                  ]
+        };
+Weighed bucket data:
+$VAR1 = {
+          '0' => 20,
+          '-2' => 2,
+          '-3' => 2,
+          '-1' => 6
+        };
+Bucket mapping data:
+$VAR1 = {
+          '0' => {
+                   'min' => '0',
+                   'max' => '0.666666666666667'
+                 },
+          '-2' => {
+                    'min' => '0.666666666666667',
+                    'max' => '0.733333333333333'
+                  },
+          '-3' => {
+                    'min' => '0.933333333333333',
+                    'max' => '1'
+                  },
+          '-1' => {
+                    'min' => '0.733333333333333',
+                    'max' => '0.933333333333333'
+                  }
+        };
+Testing 0.40121254588394 against:
+$VAR1 = {
+          'min' => '0',
+          'max' => '0.666666666666667'
+        };
+SOMETHING ELSE GOOD
