@@ -13,7 +13,7 @@ sub random_weighted_quote
     my $bucket_arrayref = random_weighted_bucket($buckets_hashref,
         map_buckets($buckets_hashref, weigh_buckets($buckets_hashref)));
 
-    return $bucket_arrayref->[rand @{$bucket_arrayref}]{'quote'};    
+    return $bucket_arrayref->[rand @{$bucket_arrayref}];    
 }
 
 # put items in buckets by score; scores >= 0 go in the same bucket
